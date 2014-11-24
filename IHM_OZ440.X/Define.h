@@ -22,7 +22,7 @@ extern "C" {
 #endif	/* DEFINE_H */
 
 #define MAJOR_SW_VERSION 1
-#define MINOR_SW_VERSION 0
+#define MINOR_SW_VERSION 1
 
 #define BOARD_NUMBER 1
 #define BOARD_REVISION 1

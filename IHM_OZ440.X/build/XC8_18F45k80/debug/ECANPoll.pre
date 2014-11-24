@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "ECANPoll.c"
 
 
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\htc.h"
@@ -22117,163 +22117,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdbool.h"
-typedef unsigned char bool;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 23 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdio.h"
-extern int errno;
-
-# 54
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 17 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\conio.h"
-extern int errno;
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 31
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 99 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 191
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...);
-extern int sscanf(const char *, const char *, ...);
-extern int vprintf(const char *, va_list);
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap);
-extern int vsscanf(const char *, const char *, va_list);
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 79 "ECANPoll.h"
+# 79 "ecanpoll.h"
 typedef unsigned char BYTE;
 
 typedef union _BYTE_VAL
@@ -22360,472 +22204,369 @@ BYTE type );
 # 1705
 static volatile near bit RXBODBEN @ ((unsigned)&RXB0CON*8)+2;
 
-# 22 "system.h"
-struct RTC_counter {
-unsigned char AccelTick_ms;
-unsigned char GyroTick_ms;
-unsigned char MagnetTick_ms;
-
-};
-
-struct CANTxMsg{
-
-unsigned long id;
-BYTE data_TX[8];
-BYTE dataLen;
-ECAN_TX_MSG_FLAGS flags;
-
-};
-
-struct CANRxMsg{
-
-unsigned long id;
-BYTE data_RX[8];
-BYTE dataLen;
-ECAN_RX_MSG_FLAGS flags;
-
-};
-
-struct CANTxFifo{
-
-struct CANTxMsg CANMsg[10];
-
-unsigned char LowIndex;
-unsigned char HighIndex;
-unsigned char Fifofull;
-unsigned char FifoEmpty;
-
-};
-
-struct CANRxFifo{
-
-struct CANRxMsg CANMsg[10];
-
-unsigned char LowIndex;
-unsigned char HighIndex;
-unsigned char Fifofull;
-unsigned char FifoEmpty;
-
-};
-
-
-struct SoundMsg{
-
-char SoundType;
-char Volume;
-char OnDuration;
-char OffDuration;
-char CurrentPhase;
-char CycleNumber;
-char CycleIndex;
-unsigned int Frequency;
-char OnTimeIndex;
-char OffTimeIndex;
-
-};
-
-struct KeybMsg{
-
-char KeybCode;
-char OldKeybCode;
-char KeyPressedEvent;
-char LongPressDetected;
-char FirePressIndex;
-char LongPressIndex;
-char KeybTimerTicked;
-char KeybLongPressDelay;
-char KeybFireDelay;
-
-};
-
-struct LedDisp{
-char LightedLeds;
-char LedColor;
-char LedDiplayCycle;
-
-};
-
-# 115
-void ConfigureOscillator(void);
-void ConfigureGPIO(void);
-void ConfigureAnalog(void);
-void ConfigureInterrupts(void);
-
-void ConfigureTimers(void);
-char SystemTest(void);
-void ConfigureCCP(void);
-char GetCanAdress(void);
-
-# 24 "Can_HL.h"
-void CANTxFifoInit(void);
-void CANRxFifoInit(void);
-
-void PutCANTxFifo(struct CANTxMsg PutMessage);
-struct CANTxMsg GetCANTxFifo(void);
-void PutCANRxFifo(struct CANRxMsg PutMessage);
-struct CANRxMsg GetCANRxFifo(void);
-
-void ECANFiltersInit(void);
-
-# 25 "LCD.h"
-void LCDClearDisplay(void);
-void LCDSendCharacter(char adress,char data);
-void LCDSendCommand(char command);
-void LCDBacklight(char value);
-void LCDContrast(char value);
-void LCDInit(void);
-char LCDGetStatus(void);
-void LCDInitMsg(void);
-
-# 24 "sound.h"
-void SoundContinuous(char freq, char duration, char volume);
-
-void SoundIntermittent(char freq, char soundduration, char SilentDuration, char cycles, char volume);
-
-void SoundStop(void);
-
-# 24 "keybled.h"
-void LedDisplay(void);
-void KeybConfiguration(char longpresstime,char firetime);
-char KeybRead(void);
-
-# 34 "main.c"
-struct RTC_counter TickCounter;
-
-
-struct CANTxFifo CANTxFifo;
-struct CANRxFifo CANRxFifo;
-char LocalCanAdress;
-
-
-struct SoundMsg SoundMsg;
-
-
-char SoundTimerTicked;
-
-
-struct KeybMsg KeybMsg;
-
-
-struct LedDisp LedDisp;
-
-# 57
-void main(void)
-{
-char TempVar;
-unsigned int TempVarInt;
-
-
-char AutotestResult;
-
-
-struct CANTxMsg TempCANTxMsg;
-
-
-struct CANRxMsg TempCANRxMsg;
-
-# 80
-ConfigureOscillator();
-_delay((unsigned long)((10)*(64000000/4000.0)));
-
-
-ConfigureGPIO();
-
-
-LocalCanAdress = GetCanAdress();
-
-ECANInitialize();
-
-ECANFiltersInit();
-
-
-ConfigureTimers();
-
-
-ConfigureCCP();
-
-# 104
-TickCounter.AccelTick_ms=0;
-TickCounter.GyroTick_ms=1;
-TickCounter.MagnetTick_ms=2;
-
-
-CANTxFifoInit();
-CANRxFifoInit();
-
-
-KeybMsg.KeybCode=0x00;
-KeybMsg.KeybLongPressDelay=200;
-KeybMsg.KeybFireDelay=20;
-
-
-LedDisp.LightedLeds=0;
-LedDisp.LedColor=0;
-
-# 125
-_delay((unsigned long)((10)*(64000000/4000.0)));
-LCDInit();
-_delay((unsigned long)((5)*(64000000/4000.0)));
-LCDInitMsg();
-
-# 136
-ConfigureInterrupts();
-
-AutotestResult = SystemTest();
-
-# 146
-while(1)
+# 41 "ECANPoll.c"
+void _CANIDToRegs(BYTE* ptr,
+unsigned long val,
+BYTE type);
+void _RegsToCANID(BYTE* ptr,
+unsigned long *val,
+BYTE type);
+
+# 53
+BYTE_VAL _ECANRxFilterHitInfo;
+
+# 164
+void ECANInitialize(void)
 {
 
-# 163
-LedDisplay();
 
-# 169
-KeybMsg.OldKeybCode=KeybMsg.KeybCode;
-KeybMsg.KeybCode=KeybRead();
+ECANSetOperationMode(ECAN_OP_MODE_CONFIG);
 
 
-if(KeybMsg.KeybCode!=KeybMsg.OldKeybCode)
-KeybMsg.KeyPressedEvent=1;
+
+BRGCON1 = ((1-1) << 6) | (2-1);
+BRGCON2 = (0 << 7) | (1 << 6) | ((7-1) << 3) | (1-1);
+
+# 177
+BRGCON3 = (0 << 7) |
+(0 << 6) |
+(1-1);
+
+
+CIOCON = 0 << 7 | 0 << 6 | 1 << 5 | 1 << 4;
+
+# 189
+MDSEL1 = 0x00 >> 7;
+MDSEL0 = 0x00 >> 6;
+
+
+
+
+RXB0CON = (0 << 5) | (0 << 2);
+RXB1CON = 0 << 5;
+
+# 290
+RXF0SIDH = (long)0x0L >> 3L;RXF0SIDL = (long)0x0L << 5L;
+
+# 298
+RXF1SIDH = (long)0x0L >> 3L;RXF1SIDL = (long)0x0L << 5L;
+
+# 307
+RXF2SIDH = (long)0x0L >> 3L;RXF2SIDL = (long)0x0L << 5L;
+
+# 316
+RXF3SIDH = (long)0x0L >> 3L;RXF3SIDL = (long)0x0L << 5L;
+
+# 325
+RXF4SIDH = (long)0x0L >> 3L;RXF4SIDL = (long)0x0L << 5L;
+
+# 333
+RXF5SIDH = (long)0x0L >> 3L;RXF5SIDL = (long)0x0L << 5L;
+
+# 475
+RXM0SIDH = (long)0x0L >> 3L; RXM0SIDL = (long)0x0L << 5L;
+RXM0EXIDM = 0;
+
+# 483
+RXM1SIDH = (long)0x0L >> 3L; RXM1SIDL = (long)0x0L << 5L;
+RXM1EXIDEN = 0;
+
+# 495
+ECANSetOperationMode(0x00);
+
+}
+
+# 610
+BOOL ECANSendMessage( unsigned long id,
+BYTE* data,
+BYTE dataLen,
+ECAN_TX_MSG_FLAGS msgFlags)
+{
+
+# 625
+BYTE i,j;
+BYTE *ptr, *tempPtr;
+BYTE* pb[9];
+BYTE temp;
+
+# 638
+pb[0]=(BYTE*)&TXB0CON;
+pb[1]=(BYTE*)&TXB1CON;
+pb[2]=(BYTE*)&TXB2CON;
+
+# 670
+for ( i = 0; i < 2; i++ )
+
+# 685
+{
+
+# 690
+ptr = pb[i];
+tempPtr = ptr;
+
+# 717
+if ( !(*ptr & 0x08) )
+{
+
+*ptr &= ~ECAN_TX_PRIORITY_BITS;
+*ptr |= msgFlags & ECAN_TX_PRIORITY_BITS;
+
+
+if ( msgFlags & ECAN_TX_RTR_BIT )
+temp = 0x40 | dataLen;
 else
-KeybMsg.KeyPressedEvent=0;
+temp = dataLen;
+
+*(ptr+5) = temp;
+
+
+if ( msgFlags & ECAN_TX_FRAME_BIT )
+temp = 1;
+
+else
+temp = 0;
+
+
+_CANIDToRegs((BYTE*)(ptr+1), id, temp);
+
+
+ptr += 6;
+
+for ( j = 0 ; j < dataLen; j++ )
+*ptr++ = *data++;
 
 
 
-if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode==0x00 && KeybMsg.LongPressDetected==0 && KeybMsg.KeybTimerTicked)
-{
-KeybMsg.KeybTimerTicked=0;
-KeybMsg.LongPressIndex=0;
+if ( !(*tempPtr & 0x04) )
+*tempPtr |= 0x08;
 
-TempCANTxMsg.data_TX[0] = KeybMsg.OldKeybCode;
-TempCANTxMsg.dataLen= 1;
-TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
+return TRUE;
+}
 }
 
 
-
-if(KeybMsg.KeybCode!=0x00 && KeybMsg.LongPressIndex>=KeybMsg.KeybLongPressDelay && KeybMsg.LongPressDetected==0)
-{
-KeybMsg.KeybTimerTicked=0;
-
-KeybMsg.LongPressDetected=1;
-KeybMsg.LongPressIndex=0;
-
-TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
-TempCANTxMsg.dataLen= 1;
-TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
+return FALSE;
 }
 
-
-if(KeybMsg.KeybCode!=0x00 && KeybMsg.FirePressIndex>=KeybMsg.KeybFireDelay && KeybMsg.LongPressDetected==1)
-{
-KeybMsg.KeybTimerTicked=0;
-KeybMsg.FirePressIndex=0;
-
-TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
-TempCANTxMsg.dataLen= 1;
-TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-
-
-
-if(KeybMsg.KeybCode==0x00 && KeybMsg.LongPressDetected==1)
-{
-KeybMsg.KeybTimerTicked=0;
-KeybMsg.FirePressIndex=0;
-KeybMsg.LongPressIndex=0;
-KeybMsg.LongPressDetected=0;
-
-}
-
-# 237
-if(SoundMsg.SoundType == 1 && SoundMsg.OnTimeIndex>SoundMsg.OnDuration)
-SoundStop();
-
-
-if(SoundTimerTicked==1 && SoundMsg.SoundType == 2 && SoundMsg.CurrentPhase==1 && SoundMsg.OnTimeIndex>=SoundMsg.OnDuration)
-{
-ECCP1CONbits.CCP1M = 0b0000;
-
-SoundTimerTicked=0;
-SoundMsg.CurrentPhase=2;
-SoundMsg.OnTimeIndex=0;
-SoundMsg.OffTimeIndex=0;
-
-if(SoundMsg.CycleNumber!=0)
-SoundMsg.CycleIndex++;
-
-}
-
-if(SoundTimerTicked==1 && SoundMsg.SoundType == 2 && SoundMsg.CurrentPhase==2 && SoundMsg.OffTimeIndex>=SoundMsg.OffDuration && SoundMsg.CycleIndex<=SoundMsg.CycleNumber)
-{
-ECCP1CONbits.CCP1M = 0b1100;
-
-SoundTimerTicked=0;
-SoundMsg.CurrentPhase=1;
-SoundMsg.OffTimeIndex=0;
-SoundMsg.OnTimeIndex=0;
-
-}
-
-if(SoundTimerTicked==1 && SoundMsg.SoundType == 2 && SoundMsg.CurrentPhase==2 && SoundMsg.OffTimeIndex>SoundMsg.OffDuration && SoundMsg.CycleIndex>SoundMsg.CycleNumber)
-{
-SoundTimerTicked=0;
-SoundStop();
-SoundMsg.CurrentPhase = 1;
-SoundMsg.OffTimeIndex= 0;
-SoundMsg.OnTimeIndex = 0;
-}
-
-# 281
-if (!CANRxFifo.FifoEmpty)
+# 796
+BOOL ECANReceiveMessage(unsigned long *id,
+BYTE *data,
+BYTE *dataLen,
+ECAN_RX_MSG_FLAGS *msgFlags)
 {
 
-TempCANRxMsg = GetCANRxFifo();
+# 805
+BYTE *ptr, *savedPtr;
+char i;
+BYTE_VAL temp;
 
-if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0))
-{
-if (TempCANRxMsg.data_RX[0] == 0x1 && TempCANRxMsg.dataLen == 1)
-{
-LCDClearDisplay();
-}
-else if (TempCANRxMsg.data_RX[0] == 0x2 && TempCANRxMsg.dataLen == 3)
-{
-LCDSendCharacter(TempCANRxMsg.data_RX[1], TempCANRxMsg.data_RX[2]);
-}
-else if (TempCANRxMsg.data_RX[0] == 0x3 && TempCANRxMsg.dataLen == 2)
-{
-LCDSendCommand(TempCANRxMsg.data_RX[1]);
-}
-}
+_ECANRxFilterHitInfo.Val = 0;
 
-
-
-else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x2))
-{
-if (TempCANRxMsg.dataLen == 0x2)
-{
-LedDisp.LightedLeds=TempCANRxMsg.data_RX[0];
-LedDisp.LedColor=TempCANRxMsg.data_RX[1];
-}
-}
-
-
-
-if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x3))
+# 819
 {
 
-if (TempCANRxMsg.data_RX[0] == 0x1 && TempCANRxMsg.dataLen == 0x4)
-{
-SoundContinuous(TempCANRxMsg.data_RX[1],TempCANRxMsg.data_RX[2],TempCANRxMsg.data_RX[3]);
-}
-
-else if (TempCANRxMsg.data_RX[0] == 0x2 && TempCANRxMsg.dataLen == 0x6)
-{
-SoundIntermittent(TempCANRxMsg.data_RX[1],TempCANRxMsg.data_RX[2],TempCANRxMsg.data_RX[3],TempCANRxMsg.data_RX[4],TempCANRxMsg.data_RX[5]);
-}
-else if (TempCANRxMsg.data_RX[0] == 0x3 && TempCANRxMsg.dataLen == 0x1)
-{
-SoundStop();
-}
-}
-
-
-
-if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x4))
-{
-if (TempCANRxMsg.dataLen == 0x1 && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+if ( RXB0FUL )
 {
 
-
-LCDGetStatus();
-TempCANTxMsg.data_TX[0] = LCDGetStatus() << 1 | AutotestResult;
-TempCANTxMsg.dataLen= 0x1;
-TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x4 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
+RXB0IF = 0;
 
 
-}
-}
-
-
-
-else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x5))
+if ( RXB0OVFL )
 {
-if (TempCANRxMsg.dataLen == 0x2)
-{
-KeybConfiguration(TempCANRxMsg.data_RX[0], TempCANRxMsg.data_RX[1]);
-}
+*msgFlags |= ECAN_RX_OVERFLOW;
+RXB0OVFL = 0;
 }
 
+_ECANRxFilterHitInfo.bits.b0 = RXB0FILHIT0;
 
+ptr = (BYTE*)&RXB0CON;
 
-else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x7))
-{
-if (TempCANRxMsg.dataLen == 0x1)
-{
-LCDContrast(TempCANRxMsg.data_RX[0]);
 }
-}
-
-
-
-else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x8))
-{
-if (TempCANRxMsg.dataLen == 0x1)
-{
-LCDBacklight(TempCANRxMsg.data_RX[0]);
-}
-}
-
-
-
-else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x6))
-{
-if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
-{
-TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
-TempCANTxMsg.dataLen= 2;
-TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x6 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-}
-
-
-
-else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0xF))
+else if ( RXB1FUL )
 {
 
-if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+RXB1IF = 0;
+
+
+if ( RXB1OVFL )
 {
-TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
-TempCANTxMsg.dataLen= 2;
-TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0xF );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-}
+*msgFlags |= ECAN_RX_OVERFLOW;
+RXB1OVFL = 0;
 }
 
-# 418
-if(!CANTxFifo.FifoEmpty && !TXB0CONbits.TXREQ)
+_ECANRxFilterHitInfo.Val = RXB1CON & 0x07;
+
+if ( _ECANRxFilterHitInfo.Val < 0x02 )
+*msgFlags |= ECAN_RX_DBL_BUFFERED;
+
+
+ptr = (BYTE*)&RXB1CON;
+}
+else
+return FALSE;
+
+goto _SaveMessage;
+}
+
+# 938
+_SaveMessage:
+savedPtr = ptr;
+*msgFlags = 0;
+
+
+temp.Val = *(ptr+5);
+*dataLen = temp.Val & 0b00001111;
+
+
+if ( temp.bits.b6 )
+*msgFlags |= ECAN_RX_RTR_FRAME;
+
+
+temp.Val = *(ptr+2);
+if ( temp.bits.b3 )
 {
-TempCANTxMsg=GetCANTxFifo();
-ECANSendMessage(TempCANTxMsg.id,TempCANTxMsg.data_TX,TempCANTxMsg.dataLen,TempCANTxMsg.flags);
+*msgFlags |= ECAN_RX_XTD_FRAME;
+temp.Val = 1;
+}
+else
+temp.Val = 0;
+
+_RegsToCANID(ptr+1, id, temp.Val);
+
+
+ptr += 6;
+temp.Val = *dataLen;
+for ( i = 0; i < temp.Val; i++ )
+*data++ = *ptr++;
+
+
+if ( IRXIF )
+{
+*msgFlags |= ECAN_RX_INVALID_MSG;
+IRXIF = 0;
 }
 
 
+*savedPtr &= 0x7f;
+
+# 991
+return TRUE;
 }
 
+# 1012
+void ECANSetOperationMode(ECAN_OP_MODE mode)
+{
+CANCON &= 0x1F;
+CANCON |= mode;
+
+while( (CANSTAT & ECAN_OP_MODE_BITS) != mode );
+}
+
+# 1058
+typedef union _CAN_MESSAGE_ID
+{
+unsigned long ID;
+
+struct
+{
+struct
+{
+unsigned SIDL:3;
+unsigned SIDH:5;
+} BYTE1;
+struct
+{
+unsigned SIDHU:3;
+unsigned EIDL_LN:5;
+} BYTE2;
+struct
+{
+unsigned EIDL_UN:3;
+unsigned EIDH_LN:5;
+} BYTE3;
+struct
+{
+unsigned EIDH_UN:3;
+unsigned EIDHU:2;
+unsigned :3;
+} BYTE4;
+} ID_VALS;
+
+
+struct
+{
+BYTE BYTE_1;
+BYTE BYTE_2;
+BYTE BYTE_3;
+BYTE BYTE_4;
+} BYTES;
+} CAN_MESSAGE_ID;
+
+void _CANIDToRegs(BYTE* ptr,
+unsigned long val,
+BYTE type)
+{
+CAN_MESSAGE_ID *Value;
+
+Value = (CAN_MESSAGE_ID*)&val;
+
+if ( type == 0 )
+{
+
+*ptr = Value->BYTES.BYTE_1 >> 3;
+*ptr |= (Value->BYTES.BYTE_2 << 5);
+ptr++;
+*ptr = Value->BYTES.BYTE_1 << 5;
+}
+else
+{
+
+*ptr = Value->BYTES.BYTE_3 >> 5;
+*ptr |= Value->BYTES.BYTE_4 << 3;
+ptr++;
+*ptr = (Value->BYTES.BYTE_3 << 3) & 0xE0;
+
+*ptr |= 0b00001000;
+*ptr |= Value->BYTES.BYTE_3 & 0x03;
+ptr++;
+*ptr = Value->BYTES.BYTE_2;
+ptr++;
+*ptr = Value->BYTES.BYTE_1;
+}
+}
+
+# 1154
+void _RegsToCANID( BYTE* ptr,
+unsigned long *val,
+BYTE type )
+{
+CAN_MESSAGE_ID *Value;
+
+Value = (CAN_MESSAGE_ID*)val;
+
+if ( type == 0 )
+{
+
+Value->BYTES.BYTE_1 = (*ptr << 3);
+Value->BYTES.BYTE_2 = *ptr >> 5;
+ptr++;
+Value->BYTES.BYTE_1 |= (*ptr >> 5);
+Value->BYTES.BYTE_3 = 0x00;
+Value->BYTES.BYTE_4 = 0x00;
+}
+else
+{
+
+Value->BYTES.BYTE_3 = (*ptr << 5);
+Value->BYTES.BYTE_4 = (*ptr >> 3);
+ptr++;
+Value->BYTES.BYTE_3 |= (*ptr & 0x03);
+
+Value->BYTES.BYTE_3 |= ((*ptr & 0xe0) >> 3);
+ptr++;
+Value->BYTES.BYTE_2 = *ptr;
+ptr++;
+Value->BYTES.BYTE_1 = *ptr;
+}
 }
 

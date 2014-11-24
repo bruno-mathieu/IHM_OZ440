@@ -1,132 +1,56 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"22 system.h
-[s S2670 `uc 1 `uc 1 `uc 1 ]
-[n S2670 RTC_counter AccelTick_ms GyroTick_ms MagnetTick_ms ]
-"37 main.c
-[c E19369 3 0 1 2 3 32 0 32 64 0 64 .. ]
-[n E19369 _ECAN_TX_MSG_FLAGS ECAN_TX_PRIORITY_BITS ECAN_TX_PRIORITY_0 ECAN_TX_PRIORITY_1 ECAN_TX_PRIORITY_2 ECAN_TX_PRIORITY_3 ECAN_TX_FRAME_BIT ECAN_TX_STD_FRAME ECAN_TX_XTD_FRAME ECAN_TX_RTR_BIT ECAN_TX_NO_RTR_FRAME ECAN_TX_RTR_FRAME  ]
-"29 system.h
-[s S2671 `ul 1 `uc -> 8 `i `uc 1 `E19369 1 ]
-[n S2671 CANTxMsg id data_TX dataLen flags ]
-"47
-[s S2673 `S2671 -> 10 `i `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2673 CANTxFifo CANMsg LowIndex HighIndex Fifofull FifoEmpty ]
-"38 main.c
-[c E19387 8 16 32 64 128 .. ]
-[n E19387 _ECAN_RX_MSG_FLAGS ECAN_RX_OVERFLOW ECAN_RX_INVALID_MSG ECAN_RX_XTD_FRAME ECAN_RX_RTR_FRAME ECAN_RX_DBL_BUFFERED  ]
-"38 system.h
-[s S2672 `ul 1 `uc -> 8 `i `uc 1 `E19387 1 ]
-[n S2672 CANRxMsg id data_RX dataLen flags ]
-"58
-[s S2674 `S2672 -> 10 `i `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2674 CANRxFifo CANMsg LowIndex HighIndex Fifofull FifoEmpty ]
-"70
-[s S2675 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `uc 1 `uc 1 ]
-[n S2675 SoundMsg SoundType Volume OnDuration OffDuration CurrentPhase CycleNumber CycleIndex Frequency OnTimeIndex OffTimeIndex ]
-"85
-[s S2676 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2676 KeybMsg KeybCode OldKeybCode KeyPressedEvent LongPressDetected FirePressIndex LongPressIndex KeybTimerTicked KeybLongPressDelay KeybFireDelay ]
-"99
-[s S2677 `uc 1 `uc 1 `uc 1 ]
-[n S2677 LedDisp LightedLeds LedColor LedDiplayCycle ]
-[p mainexit ]
-"115
-[v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
 [v F19259 `(v ~T0 @X0 1 tf1`ul ]
 "147 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18.h
 [v __delay `JF19259 ~T0 @X0 0 e ]
 [p i __delay ]
-"116 system.h
-[v _ConfigureGPIO `(v ~T0 @X0 0 ef ]
-"123
-[v _GetCanAdress `(uc ~T0 @X0 0 ef ]
-"145 ECANPoll.h
-[v _ECANInitialize `(v ~T0 @X0 0 ef ]
-"32 Can_HL.h
-[v _ECANFiltersInit `(v ~T0 @X0 0 ef ]
-"120 system.h
-[v _ConfigureTimers `(v ~T0 @X0 0 ef ]
-"122
-[v _ConfigureCCP `(v ~T0 @X0 0 ef ]
-"24 Can_HL.h
-[v _CANTxFifoInit `(v ~T0 @X0 0 ef ]
-"25
-[v _CANRxFifoInit `(v ~T0 @X0 0 ef ]
-"30 LCD.h
-[v _LCDInit `(v ~T0 @X0 0 ef ]
-"32
-[v _LCDInitMsg `(v ~T0 @X0 0 ef ]
-"118 system.h
-[v _ConfigureInterrupts `(v ~T0 @X0 0 ef ]
-"121
-[v _SystemTest `(uc ~T0 @X0 0 ef ]
-"24 keybled.h
-[v _LedDisplay `(v ~T0 @X0 0 ef ]
-"26
-[v _KeybRead `(uc ~T0 @X0 0 ef ]
-"27 Can_HL.h
-[v _PutCANTxFifo `(v ~T0 @X0 0 ef1`S2671 ]
-"28 sound.h
-[v _SoundStop `(v ~T0 @X0 0 ef ]
-[s S2411 :4 `uc 1 :2 `uc 1 :2 `uc 1 ]
-[n S2411 . CCP1M DC1B P1M ]
-[s S2412 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2412 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 DC1B0 DC1B1 P1M0 P1M1 ]
-[s S2413 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2413 . . CCP1Y CCP1X ]
-[u S2410 `S2411 1 `S2412 1 `S2413 1 ]
-[n S2410 . . . . ]
-"37331 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _ECCP1CONbits `VS2410 ~T0 @X0 0 e@4027 ]
-"30 Can_HL.h
-[v _GetCANRxFifo `(S2672 ~T0 @X0 0 ef ]
-"25 LCD.h
-[v _LCDClearDisplay `(v ~T0 @X0 0 ef ]
-"26
-[v _LCDSendCharacter `(v ~T0 @X0 0 ef2`uc`uc ]
-"27
-[v _LCDSendCommand `(v ~T0 @X0 0 ef1`uc ]
-"24 sound.h
-[v _SoundContinuous `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"26
-[v _SoundIntermittent `(v ~T0 @X0 0 ef5`uc`uc`uc`uc`uc ]
-"31 LCD.h
-[v _LCDGetStatus `(uc ~T0 @X0 0 ef ]
-"25 keybled.h
-[v _KeybConfiguration `(v ~T0 @X0 0 ef2`uc`uc ]
-"29 LCD.h
-[v _LCDContrast `(v ~T0 @X0 0 ef1`uc ]
-"28
-[v _LCDBacklight `(v ~T0 @X0 0 ef1`uc ]
-[s S1660 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1660 . TXPRI . TXREQ TXERR TXLARB TXABT TXBIF ]
-[s S1661 :1 `uc 1 :1 `uc 1 ]
-[n S1661 . TXPRI0 TXPRI1 ]
-[s S1662 :7 `uc 1 :1 `uc 1 ]
-[n S1662 . . TX0IF ]
-[s S1663 :6 `uc 1 :1 `uc 1 ]
-[n S1663 . . TXB0ABT ]
-[s S1664 :4 `uc 1 :1 `uc 1 ]
-[n S1664 . . TXB0ERR ]
-[s S1665 :5 `uc 1 :1 `uc 1 ]
-[n S1665 . . TXB0LARB ]
-[s S1666 :1 `uc 1 ]
-[n S1666 . TXB0PRI0 ]
-[s S1667 :1 `uc 1 :1 `uc 1 ]
-[n S1667 . . TXB0PRI1 ]
-[s S1668 :3 `uc 1 :1 `uc 1 ]
-[n S1668 . . TXB0REQ ]
-[u S1659 `S1660 1 `S1661 1 `S1662 1 `S1663 1 `S1664 1 `S1665 1 `S1666 1 `S1667 1 `S1668 1 ]
-[n S1659 . . . . . . . . . . ]
-"25118 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _TXB0CONbits `VS1659 ~T0 @X0 0 e@3872 ]
-"28 Can_HL.h
-[v _GetCANTxFifo `(S2671 ~T0 @X0 0 ef ]
-"421 main.c
-[c E18559 0 1 .. ]
-[n E18559 _BOOL FALSE TRUE  ]
-"206 ECANPoll.h
-[v _ECANSendMessage `(E18559 ~T0 @X0 0 ef4`ul`*uc`uc`E19369 ]
+[s S2228 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2228 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+[u S2227 `S2228 1 ]
+[n S2227 . . ]
+"34088 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
+[v _TRISCbits `VS2227 ~T0 @X0 0 e@3988 ]
+[s S2210 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2210 . LATE0 LATE1 LATE2 ]
+[s S2211 :1 `uc 1 ]
+[n S2211 . LE0 ]
+[s S2212 :1 `uc 1 :1 `uc 1 ]
+[n S2212 . . LE1 ]
+[s S2213 :2 `uc 1 :1 `uc 1 ]
+[n S2213 . . LE2 ]
+[s S2214 :3 `uc 1 :1 `uc 1 ]
+[n S2214 . . LE3 ]
+[s S2215 :4 `uc 1 :1 `uc 1 ]
+[n S2215 . . LE4 ]
+[s S2216 :5 `uc 1 :1 `uc 1 ]
+[n S2216 . . LE5 ]
+[s S2217 :6 `uc 1 :1 `uc 1 ]
+[n S2217 . . LE6 ]
+[s S2218 :7 `uc 1 :1 `uc 1 ]
+[n S2218 . . LE7 ]
+[u S2209 `S2210 1 `S2211 1 `S2212 1 `S2213 1 `S2214 1 `S2215 1 `S2216 1 `S2217 1 `S2218 1 ]
+[n S2209 . . . . . . . . . . ]
+"33791
+[v _LATEbits `VS2209 ~T0 @X0 0 e@3981 ]
+"33484
+[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
+"32754
+[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
+[s S2134 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2134 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+[s S2135 :1 `uc 1 :1 `uc 1 ]
+[n S2135 . . CCP2 ]
+[s S2136 :2 `uc 1 :1 `uc 1 ]
+[n S2136 . . PA1 ]
+[s S2137 :1 `uc 1 :1 `uc 1 ]
+[n S2137 . . PA2 ]
+[u S2133 `S2134 1 `S2135 1 `S2136 1 `S2137 1 ]
+[n S2133 . . . . . ]
+"32783
+[v _PORTCbits `VS2133 ~T0 @X0 0 e@3970 ]
+"28331
+[v _CCPR5L `Vuc ~T0 @X0 0 e@3912 ]
+"28774
+[v _CCPR2L `Vuc ~T0 @X0 0 e@3921 ]
 [; ;htc.h: 22: extern void __builtin_software_breakpoint(void);
 [; ;pic18f45k80.h: 44: extern volatile unsigned char RXERRCNT @ 0xE41;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
@@ -17691,65 +17615,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 23: extern int errno;
-[; ;stdio.h: 54: struct __prbuf
-[; ;stdio.h: 55: {
-[; ;stdio.h: 56: char * ptr;
-[; ;stdio.h: 57: void (* func)(char);
-[; ;stdio.h: 58: };
-[; ;conio.h: 17: extern int errno;
-[; ;conio.h: 20: extern void init_uart(void);
-[; ;conio.h: 22: extern char getch(void);
-[; ;conio.h: 23: extern char getche(void);
-[; ;conio.h: 24: extern void putch(char);
-[; ;conio.h: 25: extern void ungetch(char);
-[; ;conio.h: 27: extern __bit kbhit(void);
-[; ;conio.h: 31: extern char * cgets(char *);
-[; ;conio.h: 32: extern void cputs(const char *);
-[; ;stdio.h: 99: extern int cprintf(char *, ...);
-[; ;stdio.h: 104: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 194: extern char * gets(char *);
-[; ;stdio.h: 195: extern int puts(const char *);
-[; ;stdio.h: 196: extern int scanf(const char *, ...);
-[; ;stdio.h: 197: extern int sscanf(const char *, const char *, ...);
-[; ;stdio.h: 198: extern int vprintf(const char *, va_list);
-[; ;stdio.h: 199: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 200: extern int vscanf(const char *, va_list ap);
-[; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list);
-[; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 206: extern int printf(const char *, ...);
 [; ;ECANPoll.h: 79: typedef unsigned char BYTE;
 [; ;ECANPoll.h: 81: typedef union _BYTE_VAL
 [; ;ECANPoll.h: 82: {
@@ -17881,13 +17746,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 121: char SystemTest(void);
 [; ;system.h: 122: void ConfigureCCP(void);
 [; ;system.h: 123: char GetCanAdress(void);
-[; ;Can_HL.h: 24: void CANTxFifoInit(void);
-[; ;Can_HL.h: 25: void CANRxFifoInit(void);
-[; ;Can_HL.h: 27: void PutCANTxFifo(struct CANTxMsg PutMessage);
-[; ;Can_HL.h: 28: struct CANTxMsg GetCANTxFifo(void);
-[; ;Can_HL.h: 29: void PutCANRxFifo(struct CANRxMsg PutMessage);
-[; ;Can_HL.h: 30: struct CANRxMsg GetCANRxFifo(void);
-[; ;Can_HL.h: 32: void ECANFiltersInit(void);
 [; ;LCD.h: 25: void LCDClearDisplay(void);
 [; ;LCD.h: 26: void LCDSendCharacter(char adress,char data);
 [; ;LCD.h: 27: void LCDSendCommand(char command);
@@ -17896,731 +17754,996 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 30: void LCDInit(void);
 [; ;LCD.h: 31: char LCDGetStatus(void);
 [; ;LCD.h: 32: void LCDInitMsg(void);
-[; ;sound.h: 24: void SoundContinuous(char freq, char duration, char volume);
-[; ;sound.h: 26: void SoundIntermittent(char freq, char soundduration, char SilentDuration, char cycles, char volume);
-[; ;sound.h: 28: void SoundStop(void);
-[; ;keybled.h: 24: void LedDisplay(void);
-[; ;keybled.h: 25: void KeybConfiguration(char longpresstime,char firetime);
-[; ;keybled.h: 26: char KeybRead(void);
-"34 main.c
-[v _TickCounter `S2670 ~T0 @X0 1 e ]
-[; ;main.c: 34: struct RTC_counter TickCounter;
+"27 LCD.c
+[v _LCDInit `(v ~T0 @X0 1 ef ]
+"28
+{
+[; ;LCD.c: 27: void LCDInit(void)
+[; ;LCD.c: 28: {
+[e :U _LCDInit ]
+[f ]
+[; ;LCD.c: 29: _delay((unsigned long)((10)*(64000000/4000.0)));
+"29
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 30: _delay((unsigned long)((10)*(64000000/4000.0)));
+"30
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 31: _delay((unsigned long)((10)*(64000000/4000.0)));
+"31
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 32: _delay((unsigned long)((10)*(64000000/4000.0)));
+"32
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 34: TRISCbits.TRISC4=0;
+"34
+[e = . . _TRISCbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD.c: 35: TRISCbits.TRISC5=0;
+"35
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD.c: 36: TRISCbits.TRISC6=0;
+"36
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;LCD.c: 37: TRISCbits.TRISC7=0;
 "37
-[v _CANTxFifo `S2673 ~T0 @X0 1 e ]
-[; ;main.c: 37: struct CANTxFifo CANTxFifo;
-"38
-[v _CANRxFifo `S2674 ~T0 @X0 1 e ]
-[; ;main.c: 38: struct CANRxFifo CANRxFifo;
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD.c: 39: LATEbits.LATE0 = 0;
 "39
-[v _LocalCanAdress `uc ~T0 @X0 1 e ]
-[; ;main.c: 39: char LocalCanAdress;
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+[; ;LCD.c: 40: LATEbits.LATE1 = 0;
+"40
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;LCD.c: 42: LATEbits.LATE2 = 1;
 "42
-[v _SoundMsg `S2675 ~T0 @X0 1 e ]
-[; ;main.c: 42: struct SoundMsg SoundMsg;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 43: LATC = (PORTC & 0x0F) | 0x30;
+"43
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 48 `i `uc ]
+[; ;LCD.c: 44: for(char i=0;i<20;i++);
+"44
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2678  ]
+[e $U 2679  ]
+[e :U 2678 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2678  ]
+[e :U 2679 ]
+}
+[; ;LCD.c: 45: LATEbits.LATE2 = 0;
 "45
-[v _SoundTimerTicked `uc ~T0 @X0 1 e ]
-[; ;main.c: 45: char SoundTimerTicked;
-"48
-[v _KeybMsg `S2676 ~T0 @X0 1 e ]
-[; ;main.c: 48: struct KeybMsg KeybMsg;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 47: _delay((unsigned long)((5)*(64000000/4000.0)));
+"47
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 49: LATEbits.LATE2 = 1;
+"49
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 50: LATC = (PORTC & 0x0F) | 0x30;
+"50
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 48 `i `uc ]
+[; ;LCD.c: 51: for(char i=0;i<20;i++);
 "51
-[v _LedDisp `S2677 ~T0 @X0 1 e ]
-[; ;main.c: 51: struct LedDisp LedDisp;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2681  ]
+[e $U 2682  ]
+[e :U 2681 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2681  ]
+[e :U 2682 ]
+}
+[; ;LCD.c: 52: LATEbits.LATE2 = 0;
+"52
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 54: _delay((unsigned long)((5)*(64000000/4000.0)));
+"54
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 56: LATEbits.LATE2 = 1;
+"56
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 57: LATC = (PORTC & 0x0F) | 0x30;
 "57
-[v _main `(v ~T0 @X0 1 ef ]
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 48 `i `uc ]
+[; ;LCD.c: 58: for(char i=0;i<20;i++);
 "58
 {
-[; ;main.c: 57: void main(void)
-[; ;main.c: 58: {
-[e :U _main ]
-[f ]
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2684  ]
+[e $U 2685  ]
+[e :U 2684 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2684  ]
+[e :U 2685 ]
+}
+[; ;LCD.c: 59: LATEbits.LATE2 = 0;
 "59
-[v _TempVar `uc ~T0 @X0 1 a ]
-"60
-[v _TempVarInt `ui ~T0 @X0 1 a ]
-"63
-[v _AutotestResult `uc ~T0 @X0 1 a ]
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 61: _delay((unsigned long)((5)*(64000000/4000.0)));
+"61
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 65: LATEbits.LATE2 = 1;
+"65
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 66: LATC = (PORTC & 0x0F) | 0x20;
 "66
-[v _TempCANTxMsg `S2671 ~T0 @X0 1 a ]
-"69
-[v _TempCANRxMsg `S2672 ~T0 @X0 1 a ]
-[; ;main.c: 59: char TempVar;
-[; ;main.c: 60: unsigned int TempVarInt;
-[; ;main.c: 63: char AutotestResult;
-[; ;main.c: 66: struct CANTxMsg TempCANTxMsg;
-[; ;main.c: 69: struct CANRxMsg TempCANRxMsg;
-[; ;main.c: 80: ConfigureOscillator();
-"80
-[e ( _ConfigureOscillator ..  ]
-[; ;main.c: 81: _delay((unsigned long)((10)*(64000000/4000.0)));
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 32 `i `uc ]
+[; ;LCD.c: 67: for(char i=0;i<20;i++);
+"67
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2687  ]
+[e $U 2688  ]
+[e :U 2687 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2687  ]
+[e :U 2688 ]
+}
+[; ;LCD.c: 68: LATEbits.LATE2 = 0;
+"68
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 70: _delay((unsigned long)((5)*(64000000/4000.0)));
+"70
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 74: LATEbits.LATE2 = 1;
+"74
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 75: LATC = (PORTC & 0x0F) | 0x20;
+"75
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 32 `i `uc ]
+[; ;LCD.c: 76: for(char i=0;i<20;i++);
+"76
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2690  ]
+[e $U 2691  ]
+[e :U 2690 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2690  ]
+[e :U 2691 ]
+}
+[; ;LCD.c: 77: LATEbits.LATE2 = 0;
+"77
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 79: _delay((unsigned long)((5)*(64000000/4000.0)));
+"79
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 81: LATEbits.LATE2 = 1;
 "81
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 84: ConfigureGPIO();
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 82: LATC = (PORTC & 0x0F) | 0xC0;
+"82
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 192 `i `uc ]
+[; ;LCD.c: 83: for(char i=0;i<20;i++);
+"83
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2693  ]
+[e $U 2694  ]
+[e :U 2693 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2693  ]
+[e :U 2694 ]
+}
+[; ;LCD.c: 84: LATEbits.LATE2 = 0;
 "84
-[e ( _ConfigureGPIO ..  ]
-[; ;main.c: 87: LocalCanAdress = GetCanAdress();
-"87
-[e = _LocalCanAdress ( _GetCanAdress ..  ]
-[; ;main.c: 89: ECANInitialize();
-"89
-[e ( _ECANInitialize ..  ]
-[; ;main.c: 91: ECANFiltersInit();
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 86: _delay((unsigned long)((5)*(64000000/4000.0)));
+"86
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 90: LATEbits.LATE2 = 1;
+"90
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 91: LATC = (PORTC & 0x0F) | 0x00;
 "91
-[e ( _ECANFiltersInit ..  ]
-[; ;main.c: 94: ConfigureTimers();
-"94
-[e ( _ConfigureTimers ..  ]
-[; ;main.c: 97: ConfigureCCP();
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 0 `i `uc ]
+[; ;LCD.c: 92: for(char i=0;i<20;i++);
+"92
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2696  ]
+[e $U 2697  ]
+[e :U 2696 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2696  ]
+[e :U 2697 ]
+}
+[; ;LCD.c: 93: LATEbits.LATE2 = 0;
+"93
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 95: _delay((unsigned long)((5)*(64000000/4000.0)));
+"95
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 97: LATEbits.LATE2 = 1;
 "97
-[e ( _ConfigureCCP ..  ]
-[; ;main.c: 104: TickCounter.AccelTick_ms=0;
-"104
-[e = . _TickCounter 0 -> -> 0 `i `uc ]
-[; ;main.c: 105: TickCounter.GyroTick_ms=1;
-"105
-[e = . _TickCounter 1 -> -> 1 `i `uc ]
-[; ;main.c: 106: TickCounter.MagnetTick_ms=2;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 98: LATC = (PORTC & 0x0F) | 0x80;
+"98
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 128 `i `uc ]
+[; ;LCD.c: 99: for(char i=0;i<20;i++);
+"99
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2699  ]
+[e $U 2700  ]
+[e :U 2699 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2699  ]
+[e :U 2700 ]
+}
+[; ;LCD.c: 100: LATEbits.LATE2 = 0;
+"100
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 102: _delay((unsigned long)((5)*(64000000/4000.0)));
+"102
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 106: LATEbits.LATE2 = 1;
 "106
-[e = . _TickCounter 2 -> -> 2 `i `uc ]
-[; ;main.c: 109: CANTxFifoInit();
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 107: LATC = (PORTC & 0x0F) | 0x00;
+"107
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 0 `i `uc ]
+[; ;LCD.c: 108: for(char i=0;i<20;i++);
+"108
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2702  ]
+[e $U 2703  ]
+[e :U 2702 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2702  ]
+[e :U 2703 ]
+}
+[; ;LCD.c: 109: LATEbits.LATE2 = 0;
 "109
-[e ( _CANTxFifoInit ..  ]
-[; ;main.c: 110: CANRxFifoInit();
-"110
-[e ( _CANRxFifoInit ..  ]
-[; ;main.c: 113: KeybMsg.KeybCode=0x00;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 111: _delay((unsigned long)((5)*(64000000/4000.0)));
+"111
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 113: LATEbits.LATE2 = 1;
 "113
-[e = . _KeybMsg 0 -> -> 0 `i `uc ]
-[; ;main.c: 114: KeybMsg.KeybLongPressDelay=200;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 114: LATC = (PORTC & 0x0F) | 0x10;
 "114
-[e = . _KeybMsg 7 -> -> 200 `i `uc ]
-[; ;main.c: 115: KeybMsg.KeybFireDelay=20;
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 16 `i `uc ]
+[; ;LCD.c: 115: for(char i=0;i<20;i++);
 "115
-[e = . _KeybMsg 8 -> -> 20 `i `uc ]
-[; ;main.c: 118: LedDisp.LightedLeds=0;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2705  ]
+[e $U 2706  ]
+[e :U 2705 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2705  ]
+[e :U 2706 ]
+}
+[; ;LCD.c: 116: LATEbits.LATE2 = 0;
+"116
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 118: _delay((unsigned long)((5)*(64000000/4000.0)));
 "118
-[e = . _LedDisp 0 -> -> 0 `i `uc ]
-[; ;main.c: 119: LedDisp.LedColor=0;
-"119
-[e = . _LedDisp 1 -> -> 0 `i `uc ]
-[; ;main.c: 125: _delay((unsigned long)((10)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 122: LATEbits.LATE2 = 1;
+"122
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 123: LATC = (PORTC & 0x0F) | 0x00;
+"123
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 0 `i `uc ]
+[; ;LCD.c: 124: for(char i=0;i<20;i++);
+"124
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2708  ]
+[e $U 2709  ]
+[e :U 2708 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2708  ]
+[e :U 2709 ]
+}
+[; ;LCD.c: 125: LATEbits.LATE2 = 0;
 "125
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 126: LCDInit();
-"126
-[e ( _LCDInit ..  ]
-[; ;main.c: 127: _delay((unsigned long)((5)*(64000000/4000.0)));
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 127: _delay((unsigned long)((5)*(64000000/4000.0)));
 "127
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 128: LCDInitMsg();
-"128
-[e ( _LCDInitMsg ..  ]
-[; ;main.c: 136: ConfigureInterrupts();
-"136
-[e ( _ConfigureInterrupts ..  ]
-[; ;main.c: 138: AutotestResult = SystemTest();
+[; ;LCD.c: 129: LATEbits.LATE2 = 1;
+"129
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 130: LATC = (PORTC & 0x0F) | 0x60;
+"130
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 96 `i `uc ]
+[; ;LCD.c: 131: for(char i=0;i<20;i++);
+"131
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2711  ]
+[e $U 2712  ]
+[e :U 2711 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2711  ]
+[e :U 2712 ]
+}
+[; ;LCD.c: 132: LATEbits.LATE2 = 0;
+"132
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 134: _delay((unsigned long)((5)*(64000000/4000.0)));
+"134
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 138: LATEbits.LATE2 = 1;
 "138
-[e = _AutotestResult ( _SystemTest ..  ]
-[; ;main.c: 146: while(1)
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 139: LATC = (PORTC & 0x0F) | 0x00;
+"139
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 0 `i `uc ]
+[; ;LCD.c: 140: for(char i=0;i<20;i++);
+"140
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2714  ]
+[e $U 2715  ]
+[e :U 2714 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2714  ]
+[e :U 2715 ]
+}
+[; ;LCD.c: 141: LATEbits.LATE2 = 0;
+"141
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 143: _delay((unsigned long)((5)*(64000000/4000.0)));
+"143
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 145: LATEbits.LATE2 = 1;
+"145
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 146: LATC = (PORTC & 0x0F) | 0xC0;
 "146
-[e :U 2680 ]
-[; ;main.c: 147: {
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 192 `i `uc ]
+[; ;LCD.c: 147: for(char i=0;i<20;i++);
 "147
 {
-[; ;main.c: 163: LedDisplay();
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2717  ]
+[e $U 2718  ]
+[e :U 2717 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2717  ]
+[e :U 2718 ]
+}
+[; ;LCD.c: 148: LATEbits.LATE2 = 0;
+"148
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 150: _delay((unsigned long)((5)*(64000000/4000.0)));
+"150
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 153: }
+"153
+[e :UE 2677 ]
+}
+"155
+[v _LCDClearDisplay `(v ~T0 @X0 1 ef ]
+"156
+{
+[; ;LCD.c: 155: void LCDClearDisplay(void)
+[; ;LCD.c: 156: {
+[e :U _LCDClearDisplay ]
+[f ]
+[; ;LCD.c: 158: TRISCbits.TRISC4=0;
+"158
+[e = . . _TRISCbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD.c: 159: TRISCbits.TRISC5=0;
+"159
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD.c: 160: TRISCbits.TRISC6=0;
+"160
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;LCD.c: 161: TRISCbits.TRISC7=0;
+"161
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD.c: 163: LATEbits.LATE0 = 0;
 "163
-[e ( _LedDisplay ..  ]
-[; ;main.c: 169: KeybMsg.OldKeybCode=KeybMsg.KeybCode;
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+[; ;LCD.c: 164: LATEbits.LATE1 = 0;
+"164
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;LCD.c: 166: LATEbits.LATE2 = 1;
+"166
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 167: LATC = (PORTC & 0x0F) | 0x00;
+"167
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 0 `i `uc ]
+[; ;LCD.c: 168: for(char i=0;i<20;i++);
+"168
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2721  ]
+[e $U 2722  ]
+[e :U 2721 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2721  ]
+[e :U 2722 ]
+}
+[; ;LCD.c: 169: LATEbits.LATE2 = 0;
 "169
-[e = . _KeybMsg 1 . _KeybMsg 0 ]
-[; ;main.c: 170: KeybMsg.KeybCode=KeybRead();
-"170
-[e = . _KeybMsg 0 ( _KeybRead ..  ]
-[; ;main.c: 173: if(KeybMsg.KeybCode!=KeybMsg.OldKeybCode)
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 171: for(char i=0;i<20;i++);
+"171
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2724  ]
+[e $U 2725  ]
+[e :U 2724 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2724  ]
+[e :U 2725 ]
+}
+[; ;LCD.c: 173: LATEbits.LATE2 = 1;
 "173
-[e $ ! != -> . _KeybMsg 0 `i -> . _KeybMsg 1 `i 2682  ]
-[; ;main.c: 174: KeybMsg.KeyPressedEvent=1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 174: LATC = (PORTC & 0x0F) | 0x10;
 "174
-[e = . _KeybMsg 2 -> -> 1 `i `uc ]
-[e $U 2683  ]
+[e = _LATC -> | & -> _PORTC `i -> 15 `i -> 16 `i `uc ]
+[; ;LCD.c: 175: for(char i=0;i<20;i++);
 "175
-[e :U 2682 ]
-[; ;main.c: 175: else
-[; ;main.c: 176: KeybMsg.KeyPressedEvent=0;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2727  ]
+[e $U 2728  ]
+[e :U 2727 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2727  ]
+[e :U 2728 ]
+}
+[; ;LCD.c: 176: LATEbits.LATE2 = 0;
 "176
-[e = . _KeybMsg 2 -> -> 0 `i `uc ]
-[e :U 2683 ]
-[; ;main.c: 180: if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode==0x00 && KeybMsg.LongPressDetected==0 && KeybMsg.KeybTimerTicked)
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 178: }
+"178
+[e :UE 2720 ]
+}
 "180
-[e $ ! && && && != -> . _KeybMsg 2 `i -> -> -> 0 `i `uc `i == -> . _KeybMsg 0 `i -> 0 `i == -> . _KeybMsg 3 `i -> 0 `i != -> . _KeybMsg 6 `i -> -> -> 0 `i `uc `i 2684  ]
-[; ;main.c: 181: {
+[v _LCDSendCharacter `(v ~T0 @X0 1 ef2`uc`uc ]
 "181
 {
-[; ;main.c: 182: KeybMsg.KeybTimerTicked=0;
-"182
-[e = . _KeybMsg 6 -> -> 0 `i `uc ]
-[; ;main.c: 183: KeybMsg.LongPressIndex=0;
+[; ;LCD.c: 180: void LCDSendCharacter(char adress,char data)
+[; ;LCD.c: 181: {
+[e :U _LCDSendCharacter ]
+"180
+[v _adress `uc ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
+"181
+[f ]
+[; ;LCD.c: 183: TRISCbits.TRISC4=0;
 "183
-[e = . _KeybMsg 5 -> -> 0 `i `uc ]
-[; ;main.c: 185: TempCANTxMsg.data_TX[0] = KeybMsg.OldKeybCode;
+[e = . . _TRISCbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD.c: 184: TRISCbits.TRISC5=0;
+"184
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD.c: 185: TRISCbits.TRISC6=0;
 "185
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux . _KeybMsg 1 ]
-[; ;main.c: 186: TempCANTxMsg.dataLen= 1;
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;LCD.c: 186: TRISCbits.TRISC7=0;
 "186
-[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
-[; ;main.c: 187: TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
-"187
-[e = . _TempCANTxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 1 `i `l `ul ]
-[; ;main.c: 188: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-"188
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 189: PutCANTxFifo(TempCANTxMsg);
-"189
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
-"190
-}
-[e :U 2684 ]
-[; ;main.c: 190: }
-[; ;main.c: 194: if(KeybMsg.KeybCode!=0x00 && KeybMsg.LongPressIndex>=KeybMsg.KeybLongPressDelay && KeybMsg.LongPressDetected==0)
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD.c: 191: LATEbits.LATE0 = 0;
+"191
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+[; ;LCD.c: 192: LATEbits.LATE1 = 0;
+"192
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;LCD.c: 194: adress = adress | 0x80;
 "194
-[e $ ! && && != -> . _KeybMsg 0 `i -> 0 `i >= -> . _KeybMsg 5 `i -> . _KeybMsg 7 `i == -> . _KeybMsg 3 `i -> 0 `i 2685  ]
-[; ;main.c: 195: {
-"195
-{
-[; ;main.c: 196: KeybMsg.KeybTimerTicked=0;
+[e = _adress -> | -> _adress `i -> 128 `i `uc ]
+[; ;LCD.c: 196: LATEbits.LATE2 = 1;
 "196
-[e = . _KeybMsg 6 -> -> 0 `i `uc ]
-[; ;main.c: 198: KeybMsg.LongPressDetected=1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 197: LATC = (PORTC & 0x0F) | (adress & 0xF0);
+"197
+[e = _LATC -> | & -> _PORTC `i -> 15 `i & -> _adress `i -> 240 `i `uc ]
+[; ;LCD.c: 198: for(char i=0;i<20;i++);
 "198
-[e = . _KeybMsg 3 -> -> 1 `i `uc ]
-[; ;main.c: 199: KeybMsg.LongPressIndex=0;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2731  ]
+[e $U 2732  ]
+[e :U 2731 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2731  ]
+[e :U 2732 ]
+}
+[; ;LCD.c: 199: LATEbits.LATE2 = 0;
 "199
-[e = . _KeybMsg 5 -> -> 0 `i `uc ]
-[; ;main.c: 201: TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 201: for(char i=0;i<20;i++);
 "201
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux . _KeybMsg 0 ]
-[; ;main.c: 202: TempCANTxMsg.dataLen= 1;
-"202
-[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
-[; ;main.c: 203: TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2734  ]
+[e $U 2735  ]
+[e :U 2734 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2734  ]
+[e :U 2735 ]
+}
+[; ;LCD.c: 203: LATEbits.LATE2 = 1;
 "203
-[e = . _TempCANTxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 1 `i `l `ul ]
-[; ;main.c: 204: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 204: LATC = (PORTC & 0x0F) | (adress<<4 & 0xF0);
 "204
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 205: PutCANTxFifo(TempCANTxMsg);
+[e = _LATC -> | & -> _PORTC `i -> 15 `i & << -> _adress `i -> 4 `i -> 240 `i `uc ]
+[; ;LCD.c: 205: for(char i=0;i<20;i++);
 "205
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2737  ]
+[e $U 2738  ]
+[e :U 2737 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2737  ]
+[e :U 2738 ]
+}
+[; ;LCD.c: 206: LATEbits.LATE2 = 0;
 "206
-}
-[e :U 2685 ]
-[; ;main.c: 206: }
-[; ;main.c: 209: if(KeybMsg.KeybCode!=0x00 && KeybMsg.FirePressIndex>=KeybMsg.KeybFireDelay && KeybMsg.LongPressDetected==1)
-"209
-[e $ ! && && != -> . _KeybMsg 0 `i -> 0 `i >= -> . _KeybMsg 4 `i -> . _KeybMsg 8 `i == -> . _KeybMsg 3 `i -> 1 `i 2686  ]
-[; ;main.c: 210: {
-"210
-{
-[; ;main.c: 211: KeybMsg.KeybTimerTicked=0;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 207: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"207
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 211: LATEbits.LATE0 = 1;
 "211
-[e = . _KeybMsg 6 -> -> 0 `i `uc ]
-[; ;main.c: 212: KeybMsg.FirePressIndex=0;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+[; ;LCD.c: 212: LATEbits.LATE1 = 0;
 "212
-[e = . _KeybMsg 4 -> -> 0 `i `uc ]
-[; ;main.c: 214: TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;LCD.c: 214: LATEbits.LATE2 = 1;
 "214
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux . _KeybMsg 0 ]
-[; ;main.c: 215: TempCANTxMsg.dataLen= 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 215: LATC = (PORTC & 0x0F) | (data & 0xF0);
 "215
-[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
-[; ;main.c: 216: TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
+[e = _LATC -> | & -> _PORTC `i -> 15 `i & -> _data `i -> 240 `i `uc ]
+[; ;LCD.c: 216: for(char i=0;i<20;i++);
 "216
-[e = . _TempCANTxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 1 `i `l `ul ]
-[; ;main.c: 217: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2740  ]
+[e $U 2741  ]
+[e :U 2740 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2740  ]
+[e :U 2741 ]
+}
+[; ;LCD.c: 217: LATEbits.LATE2 = 0;
 "217
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 218: PutCANTxFifo(TempCANTxMsg);
-"218
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 219: for(char i=0;i<20;i++);
 "219
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2743  ]
+[e $U 2744  ]
+[e :U 2743 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2743  ]
+[e :U 2744 ]
 }
-[e :U 2686 ]
-[; ;main.c: 219: }
-[; ;main.c: 223: if(KeybMsg.KeybCode==0x00 && KeybMsg.LongPressDetected==1)
+[; ;LCD.c: 221: LATEbits.LATE2 = 1;
+"221
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 222: LATC = (PORTC & 0x0F) | (data<<4 & 0xF0);
+"222
+[e = _LATC -> | & -> _PORTC `i -> 15 `i & << -> _data `i -> 4 `i -> 240 `i `uc ]
+[; ;LCD.c: 223: for(char i=0;i<20;i++);
 "223
-[e $ ! && == -> . _KeybMsg 0 `i -> 0 `i == -> . _KeybMsg 3 `i -> 1 `i 2687  ]
-[; ;main.c: 224: {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2746  ]
+[e $U 2747  ]
+[e :U 2746 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2746  ]
+[e :U 2747 ]
+}
+[; ;LCD.c: 224: LATEbits.LATE2 = 0;
 "224
-{
-[; ;main.c: 225: KeybMsg.KeybTimerTicked=0;
-"225
-[e = . _KeybMsg 6 -> -> 0 `i `uc ]
-[; ;main.c: 226: KeybMsg.FirePressIndex=0;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 226: }
 "226
-[e = . _KeybMsg 4 -> -> 0 `i `uc ]
-[; ;main.c: 227: KeybMsg.LongPressIndex=0;
-"227
-[e = . _KeybMsg 5 -> -> 0 `i `uc ]
-[; ;main.c: 228: KeybMsg.LongPressDetected=0;
+[e :UE 2730 ]
+}
 "228
-[e = . _KeybMsg 3 -> -> 0 `i `uc ]
+[v _LCDSendCommand `(v ~T0 @X0 1 ef1`uc ]
+"229
+{
+[; ;LCD.c: 228: void LCDSendCommand(char command)
+[; ;LCD.c: 229: {
+[e :U _LCDSendCommand ]
+"228
+[v _command `uc ~T0 @X0 1 r1 ]
+"229
+[f ]
+[; ;LCD.c: 230: TRISCbits.TRISC4=0;
 "230
-}
-[e :U 2687 ]
-[; ;main.c: 230: }
-[; ;main.c: 237: if(SoundMsg.SoundType == 1 && SoundMsg.OnTimeIndex>SoundMsg.OnDuration)
-"237
-[e $ ! && == -> . _SoundMsg 0 `i -> 1 `i > -> . _SoundMsg 8 `i -> . _SoundMsg 2 `i 2688  ]
-[; ;main.c: 238: SoundStop();
+[e = . . _TRISCbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD.c: 231: TRISCbits.TRISC5=0;
+"231
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD.c: 232: TRISCbits.TRISC6=0;
+"232
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;LCD.c: 233: TRISCbits.TRISC7=0;
+"233
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD.c: 235: LATEbits.LATE0 = 0;
+"235
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+[; ;LCD.c: 236: LATEbits.LATE1 = 0;
+"236
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;LCD.c: 238: LATEbits.LATE2 = 1;
 "238
-[e ( _SoundStop ..  ]
-[e :U 2688 ]
-[; ;main.c: 241: if(SoundTimerTicked==1 && SoundMsg.SoundType == 2 && SoundMsg.CurrentPhase==1 && SoundMsg.OnTimeIndex>=SoundMsg.OnDuration)
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 239: LATC = (PORTC & 0x0F) | (command & 0xF0);
+"239
+[e = _LATC -> | & -> _PORTC `i -> 15 `i & -> _command `i -> 240 `i `uc ]
+[; ;LCD.c: 240: for(char i=0;i<20;i++);
+"240
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2750  ]
+[e $U 2751  ]
+[e :U 2750 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2750  ]
+[e :U 2751 ]
+}
+[; ;LCD.c: 241: LATEbits.LATE2 = 0;
 "241
-[e $ ! && && && == -> _SoundTimerTicked `i -> 1 `i == -> . _SoundMsg 0 `i -> 2 `i == -> . _SoundMsg 4 `i -> 1 `i >= -> . _SoundMsg 8 `i -> . _SoundMsg 2 `i 2689  ]
-[; ;main.c: 242: {
-"242
-{
-[; ;main.c: 243: ECCP1CONbits.CCP1M = 0b0000;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 243: for(char i=0;i<20;i++);
 "243
-[e = . . _ECCP1CONbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 245: SoundTimerTicked=0;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2753  ]
+[e $U 2754  ]
+[e :U 2753 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2753  ]
+[e :U 2754 ]
+}
+[; ;LCD.c: 245: LATEbits.LATE2 = 1;
 "245
-[e = _SoundTimerTicked -> -> 0 `i `uc ]
-[; ;main.c: 246: SoundMsg.CurrentPhase=2;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 246: LATC = (PORTC & 0x0F) | (command<<4 & 0xF0);
 "246
-[e = . _SoundMsg 4 -> -> 2 `i `uc ]
-[; ;main.c: 247: SoundMsg.OnTimeIndex=0;
+[e = _LATC -> | & -> _PORTC `i -> 15 `i & << -> _command `i -> 4 `i -> 240 `i `uc ]
+[; ;LCD.c: 247: for(char i=0;i<20;i++);
 "247
-[e = . _SoundMsg 8 -> -> 0 `i `uc ]
-[; ;main.c: 248: SoundMsg.OffTimeIndex=0;
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2756  ]
+[e $U 2757  ]
+[e :U 2756 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2756  ]
+[e :U 2757 ]
+}
+[; ;LCD.c: 248: LATEbits.LATE2 = 0;
 "248
-[e = . _SoundMsg 9 -> -> 0 `i `uc ]
-[; ;main.c: 250: if(SoundMsg.CycleNumber!=0)
-"250
-[e $ ! != -> . _SoundMsg 5 `i -> 0 `i 2690  ]
-[; ;main.c: 251: SoundMsg.CycleIndex++;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 249: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"249
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 251: }
 "251
-[e ++ . _SoundMsg 6 -> -> 1 `i `uc ]
-[e :U 2690 ]
+[e :UE 2749 ]
+}
 "253
-}
-[e :U 2689 ]
-[; ;main.c: 253: }
-[; ;main.c: 255: if(SoundTimerTicked==1 && SoundMsg.SoundType == 2 && SoundMsg.CurrentPhase==2 && SoundMsg.OffTimeIndex>=SoundMsg.OffDuration && SoundMsg.CycleIndex<=SoundMsg.CycleNumber)
+[v _LCDGetStatus `(uc ~T0 @X0 1 ef ]
+"254
+{
+[; ;LCD.c: 253: char LCDGetStatus(void)
+[; ;LCD.c: 254: {
+[e :U _LCDGetStatus ]
+[f ]
 "255
-[e $ ! && && && && == -> _SoundTimerTicked `i -> 1 `i == -> . _SoundMsg 0 `i -> 2 `i == -> . _SoundMsg 4 `i -> 2 `i >= -> . _SoundMsg 9 `i -> . _SoundMsg 3 `i <= -> . _SoundMsg 6 `i -> . _SoundMsg 5 `i 2691  ]
-[; ;main.c: 256: {
-"256
-{
-[; ;main.c: 257: ECCP1CONbits.CCP1M = 0b1100;
+[v _result `uc ~T0 @X0 1 a ]
+[; ;LCD.c: 255: char result;
+[; ;LCD.c: 257: TRISCbits.TRISC4=1;
 "257
-[e = . . _ECCP1CONbits 0 0 -> -> 12 `i `uc ]
-[; ;main.c: 259: SoundTimerTicked=0;
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+[; ;LCD.c: 258: TRISCbits.TRISC5=1;
+"258
+[e = . . _TRISCbits 0 5 -> -> 1 `i `uc ]
+[; ;LCD.c: 259: TRISCbits.TRISC6=1;
 "259
-[e = _SoundTimerTicked -> -> 0 `i `uc ]
-[; ;main.c: 260: SoundMsg.CurrentPhase=1;
+[e = . . _TRISCbits 0 6 -> -> 1 `i `uc ]
+[; ;LCD.c: 260: TRISCbits.TRISC7=1;
 "260
-[e = . _SoundMsg 4 -> -> 1 `i `uc ]
-[; ;main.c: 261: SoundMsg.OffTimeIndex=0;
-"261
-[e = . _SoundMsg 9 -> -> 0 `i `uc ]
-[; ;main.c: 262: SoundMsg.OnTimeIndex=0;
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+[; ;LCD.c: 262: LATEbits.LATE0 = 0;
 "262
-[e = . _SoundMsg 8 -> -> 0 `i `uc ]
-"264
-}
-[e :U 2691 ]
-[; ;main.c: 264: }
-[; ;main.c: 266: if(SoundTimerTicked==1 && SoundMsg.SoundType == 2 && SoundMsg.CurrentPhase==2 && SoundMsg.OffTimeIndex>SoundMsg.OffDuration && SoundMsg.CycleIndex>SoundMsg.CycleNumber)
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+[; ;LCD.c: 263: LATEbits.LATE1 = 1;
+"263
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
+[; ;LCD.c: 265: LATEbits.LATE2 = 1;
+"265
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 266: for(char i=0;i<20;i++);
 "266
-[e $ ! && && && && == -> _SoundTimerTicked `i -> 1 `i == -> . _SoundMsg 0 `i -> 2 `i == -> . _SoundMsg 4 `i -> 2 `i > -> . _SoundMsg 9 `i -> . _SoundMsg 3 `i > -> . _SoundMsg 6 `i -> . _SoundMsg 5 `i 2692  ]
-[; ;main.c: 267: {
-"267
 {
-[; ;main.c: 268: SoundTimerTicked=0;
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2760  ]
+[e $U 2761  ]
+[e :U 2760 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2760  ]
+[e :U 2761 ]
+}
+[; ;LCD.c: 268: if(PORTCbits.RC7)
 "268
-[e = _SoundTimerTicked -> -> 0 `i `uc ]
-[; ;main.c: 269: SoundStop();
+[e $ ! != -> . . _PORTCbits 0 7 `i -> -> -> 0 `i `Vuc `i 2763  ]
+[; ;LCD.c: 269: result=1;
 "269
-[e ( _SoundStop ..  ]
-[; ;main.c: 270: SoundMsg.CurrentPhase = 1;
+[e = _result -> -> 1 `i `uc ]
+[e $U 2764  ]
 "270
-[e = . _SoundMsg 4 -> -> 1 `i `uc ]
-[; ;main.c: 271: SoundMsg.OffTimeIndex= 0;
+[e :U 2763 ]
+[; ;LCD.c: 270: else
+[; ;LCD.c: 271: result=0;
 "271
-[e = . _SoundMsg 9 -> -> 0 `i `uc ]
-[; ;main.c: 272: SoundMsg.OnTimeIndex = 0;
-"272
-[e = . _SoundMsg 8 -> -> 0 `i `uc ]
+[e = _result -> -> 0 `i `uc ]
+[e :U 2764 ]
+[; ;LCD.c: 273: LATEbits.LATE2 = 0;
 "273
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 275: for(char i=0;i<20;i++);
+"275
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2765  ]
+[e $U 2766  ]
+[e :U 2765 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2765  ]
+[e :U 2766 ]
 }
-[e :U 2692 ]
-[; ;main.c: 273: }
-[; ;main.c: 281: if (!CANRxFifo.FifoEmpty)
+[; ;LCD.c: 277: LATEbits.LATE2 = 1;
+"277
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;LCD.c: 278: for(char i=0;i<20;i++);
+"278
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2768  ]
+[e $U 2769  ]
+[e :U 2768 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 2768  ]
+[e :U 2769 ]
+}
+[; ;LCD.c: 279: LATEbits.LATE2 = 0;
+"279
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD.c: 281: TRISCbits.TRISC4=0;
 "281
-[e $ ! ! != -> . _CANRxFifo 4 `i -> -> -> 0 `i `uc `i 2693  ]
-[; ;main.c: 282: {
+[e = . . _TRISCbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD.c: 282: TRISCbits.TRISC5=0;
 "282
-{
-[; ;main.c: 284: TempCANRxMsg = GetCANRxFifo();
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD.c: 283: TRISCbits.TRISC6=0;
+"283
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;LCD.c: 284: TRISCbits.TRISC7=0;
 "284
-[e = _TempCANRxMsg ( _GetCANRxFifo ..  ]
-[; ;main.c: 286: if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0))
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD.c: 286: return result;
 "286
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 0 `i `l `ul 2694  ]
-[; ;main.c: 287: {
-"287
-{
-[; ;main.c: 288: if (TempCANRxMsg.data_RX[0] == 0x1 && TempCANRxMsg.dataLen == 1)
+[e ) _result ]
+[e $UE 2759  ]
+[; ;LCD.c: 288: }
 "288
-[e $ ! && == -> *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux `i -> 1 `i == -> . _TempCANRxMsg 2 `i -> 1 `i 2695  ]
-[; ;main.c: 289: {
-"289
-{
-[; ;main.c: 290: LCDClearDisplay();
+[e :UE 2759 ]
+}
 "290
-[e ( _LCDClearDisplay ..  ]
+[v _LCDInitMsg `(v ~T0 @X0 1 ef ]
 "291
-}
-[; ;main.c: 291: }
-[e $U 2696  ]
+{
+[; ;LCD.c: 290: void LCDInitMsg(void)
+[; ;LCD.c: 291: {
+[e :U _LCDInitMsg ]
+[f ]
+[; ;LCD.c: 292: LCDSendCharacter(0x0,0x7E);
 "292
-[e :U 2695 ]
-[; ;main.c: 292: else if (TempCANRxMsg.data_RX[0] == 0x2 && TempCANRxMsg.dataLen == 3)
-[e $ ! && == -> *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux `i -> 2 `i == -> . _TempCANRxMsg 2 `i -> 3 `i 2697  ]
-[; ;main.c: 293: {
+[e ( _LCDSendCharacter (2 , -> -> 0 `i `uc -> -> 126 `i `uc ]
+[; ;LCD.c: 293: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "293
-{
-[; ;main.c: 294: LCDSendCharacter(TempCANRxMsg.data_RX[1], TempCANRxMsg.data_RX[2]);
-"294
-[e ( _LCDSendCharacter (2 , *U + &U . _TempCANRxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
-"295
-}
-[; ;main.c: 295: }
-[e $U 2698  ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 296: LCDSendCharacter(0x6,'N');
 "296
-[e :U 2697 ]
-[; ;main.c: 296: else if (TempCANRxMsg.data_RX[0] == 0x3 && TempCANRxMsg.dataLen == 2)
-[e $ ! && == -> *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux `i -> 3 `i == -> . _TempCANRxMsg 2 `i -> 2 `i 2699  ]
-[; ;main.c: 297: {
+[e ( _LCDSendCharacter (2 , -> -> 6 `i `uc -> -> 78 `ui `uc ]
+[; ;LCD.c: 297: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "297
-{
-[; ;main.c: 298: LCDSendCommand(TempCANRxMsg.data_RX[1]);
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 298: LCDSendCharacter(0x7,'a');
 "298
-[e ( _LCDSendCommand (1 *U + &U . _TempCANRxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
+[e ( _LCDSendCharacter (2 , -> -> 7 `i `uc -> -> 97 `ui `uc ]
+[; ;LCD.c: 299: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "299
-}
-[e :U 2699 ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 300: LCDSendCharacter(0x8,'i');
 "300
-[e :U 2698 ]
-[e :U 2696 ]
-}
-[; ;main.c: 299: }
-[; ;main.c: 300: }
-[e $U 2700  ]
-"304
-[e :U 2694 ]
-[; ;main.c: 304: else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x2))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 2 `i `l `ul 2701  ]
-[; ;main.c: 305: {
+[e ( _LCDSendCharacter (2 , -> -> 8 `i `uc -> -> 105 `ui `uc ]
+[; ;LCD.c: 301: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"301
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 302: LCDSendCharacter(0x9,'o');
+"302
+[e ( _LCDSendCharacter (2 , -> -> 9 `i `uc -> -> 111 `ui `uc ]
+[; ;LCD.c: 303: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"303
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 305: LCDSendCharacter(0xF,0x7F);
 "305
-{
-[; ;main.c: 306: if (TempCANRxMsg.dataLen == 0x2)
+[e ( _LCDSendCharacter (2 , -> -> 15 `i `uc -> -> 127 `i `uc ]
+[; ;LCD.c: 306: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "306
-[e $ ! == -> . _TempCANRxMsg 2 `i -> 2 `i 2702  ]
-[; ;main.c: 307: {
-"307
-{
-[; ;main.c: 308: LedDisp.LightedLeds=TempCANRxMsg.data_RX[0];
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 308: LCDSendCharacter(0x40,0x7E);
 "308
-[e = . _LedDisp 0 *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
-[; ;main.c: 309: LedDisp.LedColor=TempCANRxMsg.data_RX[1];
+[e ( _LCDSendCharacter (2 , -> -> 64 `i `uc -> -> 126 `i `uc ]
+[; ;LCD.c: 309: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "309
-[e = . _LedDisp 1 *U + &U . _TempCANRxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
-"310
-}
-[e :U 2702 ]
-"311
-}
-[e :U 2701 ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 312: LCDSendCharacter(0x42,'T');
+"312
+[e ( _LCDSendCharacter (2 , -> -> 66 `i `uc -> -> 84 `ui `uc ]
+[; ;LCD.c: 313: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"313
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 314: LCDSendCharacter(0x43,'e');
+"314
+[e ( _LCDSendCharacter (2 , -> -> 67 `i `uc -> -> 101 `ui `uc ]
+[; ;LCD.c: 315: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "315
-[e :U 2700 ]
-[; ;main.c: 310: }
-[; ;main.c: 311: }
-[; ;main.c: 315: if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x3))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 3 `i `l `ul 2703  ]
-[; ;main.c: 316: {
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 316: LCDSendCharacter(0x44,'c');
 "316
-{
-[; ;main.c: 318: if (TempCANRxMsg.data_RX[0] == 0x1 && TempCANRxMsg.dataLen == 0x4)
+[e ( _LCDSendCharacter (2 , -> -> 68 `i `uc -> -> 99 `ui `uc ]
+[; ;LCD.c: 317: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"317
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 318: LCDSendCharacter(0x45,'h');
 "318
-[e $ ! && == -> *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux `i -> 1 `i == -> . _TempCANRxMsg 2 `i -> 4 `i 2704  ]
-[; ;main.c: 319: {
+[e ( _LCDSendCharacter (2 , -> -> 69 `i `uc -> -> 104 `ui `uc ]
+[; ;LCD.c: 319: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "319
-{
-[; ;main.c: 320: SoundContinuous(TempCANRxMsg.data_RX[1],TempCANRxMsg.data_RX[2],TempCANRxMsg.data_RX[3]);
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 320: LCDSendCharacter(0x46,'n');
 "320
-[e ( _SoundContinuous (3 , , *U + &U . _TempCANRxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
+[e ( _LCDSendCharacter (2 , -> -> 70 `i `uc -> -> 110 `ui `uc ]
+[; ;LCD.c: 321: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "321
-}
-[; ;main.c: 321: }
-[e $U 2705  ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 322: LCDSendCharacter(0x47,'o');
+"322
+[e ( _LCDSendCharacter (2 , -> -> 71 `i `uc -> -> 111 `ui `uc ]
+[; ;LCD.c: 323: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "323
-[e :U 2704 ]
-[; ;main.c: 323: else if (TempCANRxMsg.data_RX[0] == 0x2 && TempCANRxMsg.dataLen == 0x6)
-[e $ ! && == -> *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux `i -> 2 `i == -> . _TempCANRxMsg 2 `i -> 6 `i 2706  ]
-[; ;main.c: 324: {
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 324: LCDSendCharacter(0x48,'l');
 "324
-{
-[; ;main.c: 325: SoundIntermittent(TempCANRxMsg.data_RX[1],TempCANRxMsg.data_RX[2],TempCANRxMsg.data_RX[3],TempCANRxMsg.data_RX[4],TempCANRxMsg.data_RX[5]);
+[e ( _LCDSendCharacter (2 , -> -> 72 `i `uc -> -> 108 `ui `uc ]
+[; ;LCD.c: 325: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "325
-[e ( _SoundIntermittent (4 , , , , *U + &U . _TempCANRxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 326: LCDSendCharacter(0x49,'o');
 "326
-}
-[; ;main.c: 326: }
-[e $U 2707  ]
+[e ( _LCDSendCharacter (2 , -> -> 73 `i `uc -> -> 111 `ui `uc ]
+[; ;LCD.c: 327: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "327
-[e :U 2706 ]
-[; ;main.c: 327: else if (TempCANRxMsg.data_RX[0] == 0x3 && TempCANRxMsg.dataLen == 0x1)
-[e $ ! && == -> *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux `i -> 3 `i == -> . _TempCANRxMsg 2 `i -> 1 `i 2708  ]
-[; ;main.c: 328: {
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 328: LCDSendCharacter(0x4A,'g');
 "328
-{
-[; ;main.c: 329: SoundStop();
+[e ( _LCDSendCharacter (2 , -> -> 74 `i `uc -> -> 103 `ui `uc ]
+[; ;LCD.c: 329: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "329
-[e ( _SoundStop ..  ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 330: LCDSendCharacter(0x4B,'i');
 "330
-}
-[e :U 2708 ]
+[e ( _LCDSendCharacter (2 , -> -> 75 `i `uc -> -> 105 `ui `uc ]
+[; ;LCD.c: 331: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "331
-[e :U 2707 ]
-[e :U 2705 ]
-}
-[e :U 2703 ]
-[; ;main.c: 330: }
-[; ;main.c: 331: }
-[; ;main.c: 335: if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x4))
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 332: LCDSendCharacter(0x4C,'e');
+"332
+[e ( _LCDSendCharacter (2 , -> -> 76 `i `uc -> -> 101 `ui `uc ]
+[; ;LCD.c: 333: _delay((unsigned long)((50)*(64000000/4000000.0)));
+"333
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 334: LCDSendCharacter(0x4D,'s');
+"334
+[e ( _LCDSendCharacter (2 , -> -> 77 `i `uc -> -> 115 `ui `uc ]
+[; ;LCD.c: 335: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "335
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 4 `i `l `ul 2709  ]
-[; ;main.c: 336: {
-"336
-{
-[; ;main.c: 337: if (TempCANRxMsg.dataLen == 0x1 && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 337: LCDSendCharacter(0x4F,0x7F);
 "337
-[e $ ! && == -> . _TempCANRxMsg 2 `i -> 1 `i == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2710  ]
-[; ;main.c: 338: {
+[e ( _LCDSendCharacter (2 , -> -> 79 `i `uc -> -> 127 `i `uc ]
+[; ;LCD.c: 338: _delay((unsigned long)((50)*(64000000/4000000.0)));
 "338
-{
-[; ;main.c: 341: LCDGetStatus();
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+[; ;LCD.c: 341: }
 "341
-[e ( _LCDGetStatus ..  ]
-[; ;main.c: 342: TempCANTxMsg.data_TX[0] = LCDGetStatus() << 1 | AutotestResult;
-"342
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> | << -> ( _LCDGetStatus ..  `i -> 1 `i -> _AutotestResult `i `uc ]
-[; ;main.c: 343: TempCANTxMsg.dataLen= 0x1;
+[e :UE 2771 ]
+}
 "343
-[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
-[; ;main.c: 344: TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x4 );
+[v _LCDBacklight `(v ~T0 @X0 1 ef1`uc ]
 "344
-[e = . _TempCANTxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 4 `i `l `ul ]
-[; ;main.c: 345: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+{
+[; ;LCD.c: 343: void LCDBacklight(char value)
+[; ;LCD.c: 344: {
+[e :U _LCDBacklight ]
+"343
+[v _value `uc ~T0 @X0 1 r1 ]
+"344
+[f ]
+[; ;LCD.c: 345: if(value<101)
 "345
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 346: PutCANTxFifo(TempCANTxMsg);
+[e $ ! < -> _value `i -> 101 `i 2773  ]
+[; ;LCD.c: 346: CCPR5L = value;
 "346
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
-"349
+[e = _CCPR5L _value ]
+[e :U 2773 ]
+[; ;LCD.c: 348: }
+"348
+[e :UE 2772 ]
 }
-[e :U 2710 ]
 "350
-}
-[; ;main.c: 349: }
-[; ;main.c: 350: }
-[e $U 2711  ]
+[v _LCDContrast `(v ~T0 @X0 1 ef1`uc ]
+"351
+{
+[; ;LCD.c: 350: void LCDContrast(char value)
+[; ;LCD.c: 351: {
+[e :U _LCDContrast ]
+"350
+[v _value `uc ~T0 @X0 1 r1 ]
+"351
+[f ]
+[; ;LCD.c: 352: if(value<101)
+"352
+[e $ ! < -> _value `i -> 101 `i 2775  ]
+[; ;LCD.c: 353: CCPR2L = (100-value);
+"353
+[e = _CCPR2L -> - -> 100 `i -> _value `i `uc ]
+[e :U 2775 ]
+[; ;LCD.c: 354: }
 "354
-[e :U 2709 ]
-[; ;main.c: 354: else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x5))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 5 `i `l `ul 2712  ]
-[; ;main.c: 355: {
-"355
-{
-[; ;main.c: 356: if (TempCANRxMsg.dataLen == 0x2)
-"356
-[e $ ! == -> . _TempCANRxMsg 2 `i -> 2 `i 2713  ]
-[; ;main.c: 357: {
-"357
-{
-[; ;main.c: 358: KeybConfiguration(TempCANRxMsg.data_RX[0], TempCANRxMsg.data_RX[1]);
-"358
-[e ( _KeybConfiguration (2 , *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux *U + &U . _TempCANRxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
-"359
-}
-[e :U 2713 ]
-"360
-}
-[; ;main.c: 359: }
-[; ;main.c: 360: }
-[e $U 2714  ]
-"364
-[e :U 2712 ]
-[; ;main.c: 364: else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x7))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 7 `i `l `ul 2715  ]
-[; ;main.c: 365: {
-"365
-{
-[; ;main.c: 366: if (TempCANRxMsg.dataLen == 0x1)
-"366
-[e $ ! == -> . _TempCANRxMsg 2 `i -> 1 `i 2716  ]
-[; ;main.c: 367: {
-"367
-{
-[; ;main.c: 368: LCDContrast(TempCANRxMsg.data_RX[0]);
-"368
-[e ( _LCDContrast (1 *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
-"369
-}
-[e :U 2716 ]
-"370
-}
-[; ;main.c: 369: }
-[; ;main.c: 370: }
-[e $U 2717  ]
-"374
-[e :U 2715 ]
-[; ;main.c: 374: else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x8))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 8 `i `l `ul 2718  ]
-[; ;main.c: 375: {
-"375
-{
-[; ;main.c: 376: if (TempCANRxMsg.dataLen == 0x1)
-"376
-[e $ ! == -> . _TempCANRxMsg 2 `i -> 1 `i 2719  ]
-[; ;main.c: 377: {
-"377
-{
-[; ;main.c: 378: LCDBacklight(TempCANRxMsg.data_RX[0]);
-"378
-[e ( _LCDBacklight (1 *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
-"379
-}
-[e :U 2719 ]
-"380
-}
-[; ;main.c: 379: }
-[; ;main.c: 380: }
-[e $U 2720  ]
-"384
-[e :U 2718 ]
-[; ;main.c: 384: else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x6))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 6 `i `l `ul 2721  ]
-[; ;main.c: 385: {
-"385
-{
-[; ;main.c: 386: if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
-"386
-[e $ ! == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2722  ]
-[; ;main.c: 387: {
-"387
-{
-[; ;main.c: 388: TempCANTxMsg.data_TX[0]=1;
-"388
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 389: TempCANTxMsg.data_TX[1]=1;
-"389
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 390: TempCANTxMsg.dataLen= 2;
-"390
-[e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
-[; ;main.c: 391: TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x6 );
-"391
-[e = . _TempCANTxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 6 `i `l `ul ]
-[; ;main.c: 392: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-"392
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 393: PutCANTxFifo(TempCANTxMsg);
-"393
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
-"394
-}
-[e :U 2722 ]
-"395
-}
-[; ;main.c: 394: }
-[; ;main.c: 395: }
-[e $U 2723  ]
-"399
-[e :U 2721 ]
-[; ;main.c: 399: else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0xF))
-[e $ ! == . _TempCANRxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 15 `i `l `ul 2724  ]
-[; ;main.c: 400: {
-"400
-{
-[; ;main.c: 402: if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
-"402
-[e $ ! == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2725  ]
-[; ;main.c: 403: {
-"403
-{
-[; ;main.c: 404: TempCANTxMsg.data_TX[0]=1;
-"404
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 405: TempCANTxMsg.data_TX[1]=1;
-"405
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 406: TempCANTxMsg.dataLen= 2;
-"406
-[e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
-[; ;main.c: 407: TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0xF );
-"407
-[e = . _TempCANTxMsg 0 -> -> | | << -> 7 `i -> 7 `i << -> _LocalCanAdress `i -> 4 `i -> 15 `i `l `ul ]
-[; ;main.c: 408: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-"408
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 409: PutCANTxFifo(TempCANTxMsg);
-"409
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
-"410
-}
-[e :U 2725 ]
-"411
-}
-[e :U 2724 ]
-"412
-[e :U 2723 ]
-[e :U 2720 ]
-[e :U 2717 ]
-[e :U 2714 ]
-[e :U 2711 ]
-}
-[e :U 2693 ]
-[; ;main.c: 410: }
-[; ;main.c: 411: }
-[; ;main.c: 412: }
-[; ;main.c: 418: if(!CANTxFifo.FifoEmpty && !TXB0CONbits.TXREQ)
-"418
-[e $ ! && ! != -> . _CANTxFifo 4 `i -> -> -> 0 `i `uc `i ! != -> . . _TXB0CONbits 0 2 `i -> -> -> 0 `i `Vuc `i 2726  ]
-[; ;main.c: 419: {
-"419
-{
-[; ;main.c: 420: TempCANTxMsg=GetCANTxFifo();
-"420
-[e = _TempCANTxMsg ( _GetCANTxFifo ..  ]
-[; ;main.c: 421: ECANSendMessage(TempCANTxMsg.id,TempCANTxMsg.data_TX,TempCANTxMsg.dataLen,TempCANTxMsg.flags);
-"421
-[e ( _ECANSendMessage (4 , , , . _TempCANTxMsg 0 &U . _TempCANTxMsg 1 . _TempCANTxMsg 2 . _TempCANTxMsg 3 ]
-"422
-}
-[e :U 2726 ]
-"425
-}
-[e :U 2679 ]
-"146
-[e $U 2680  ]
-[e :U 2681 ]
-[; ;main.c: 422: }
-[; ;main.c: 425: }
-[; ;main.c: 427: }
-"427
-[e :UE 2678 ]
+[e :UE 2774 ]
 }

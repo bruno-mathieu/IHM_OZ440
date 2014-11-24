@@ -22789,10 +22789,10 @@ LCDBacklight(TempCANRxMsg.data_RX[0]);
 
 else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x6))
 {
-if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+if (TempCANRxMsg.dataLen == 2 && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
 {
 TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
+TempCANTxMsg.data_TX[1]=0;
 TempCANTxMsg.dataLen= 2;
 TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x6 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22805,7 +22805,7 @@ PutCANTxFifo(TempCANTxMsg);
 else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0xF))
 {
 
-if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+if (TempCANRxMsg.dataLen == 2 && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
 {
 TempCANTxMsg.data_TX[0]=1;
 TempCANTxMsg.data_TX[1]=1;

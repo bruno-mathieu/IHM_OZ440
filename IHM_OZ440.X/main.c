@@ -383,7 +383,7 @@ void main(void)
 
             else if (TempCANRxMsg.id == (CAN_MESSAGE_IHM_TYPE << 7 | LocalCanAdress << 4 | SOFT_VERSION_MESSAGE_ADRESS))
             {
-                if (TempCANRxMsg.dataLen == SOFT_VERSION_MESSAGE_LEN && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+                if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
                 {
                     TempCANTxMsg.data_TX[0]=MAJOR_SW_VERSION;
                     TempCANTxMsg.data_TX[1]=MINOR_SW_VERSION;
@@ -399,7 +399,7 @@ void main(void)
             else if (TempCANRxMsg.id == (CAN_MESSAGE_IHM_TYPE << 7 | LocalCanAdress << 4 | BOARD_VERSION_MESSAGE_ADRESS))
             {
                 
-                if (TempCANRxMsg.dataLen == BOARD_VERSION_MESSAGE_LEN && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+                if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
                 {
                     TempCANTxMsg.data_TX[0]=BOARD_NUMBER;
                     TempCANTxMsg.data_TX[1]=BOARD_REVISION;

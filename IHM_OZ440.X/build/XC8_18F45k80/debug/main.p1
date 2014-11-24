@@ -18517,18 +18517,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 385: {
 "385
 {
-[; ;main.c: 386: if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+[; ;main.c: 386: if (TempCANRxMsg.dataLen == 2 && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
 "386
-[e $ ! == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2722  ]
+[e $ ! && == -> . _TempCANRxMsg 2 `i -> 2 `i == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2722  ]
 [; ;main.c: 387: {
 "387
 {
 [; ;main.c: 388: TempCANTxMsg.data_TX[0]=1;
 "388
 [e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 389: TempCANTxMsg.data_TX[1]=1;
+[; ;main.c: 389: TempCANTxMsg.data_TX[1]=0;
 "389
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 0 `i `uc ]
 [; ;main.c: 390: TempCANTxMsg.dataLen= 2;
 "390
 [e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
@@ -18556,9 +18556,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 400: {
 "400
 {
-[; ;main.c: 402: if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
+[; ;main.c: 402: if (TempCANRxMsg.dataLen == 2 && TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
 "402
-[e $ ! == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2725  ]
+[e $ ! && == -> . _TempCANRxMsg 2 `i -> 2 `i == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2725  ]
 [; ;main.c: 403: {
 "403
 {
