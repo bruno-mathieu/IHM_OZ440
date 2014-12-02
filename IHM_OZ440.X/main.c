@@ -175,21 +175,33 @@ void main(void)
         else
             KeybMsg.KeyPressedEvent=FALSE;
 
-        //-------- if a key released is detected, and not a long press, send can message, with the code detected before key event
-
-        if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode==KEYB_RELEASED_CODE && KeybMsg.LongPressDetected==FALSE && KeybMsg.KeybTimerTicked)
+        //-------- if a key press is detected, and not a long press, send can message, with the code detected after key event
+        if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode!=KEYB_RELEASED_CODE && KeybMsg.KeybTimerTicked && KeybMsg.LongPressDetected==FALSE)
         {
                     KeybMsg.KeybTimerTicked=FALSE;
                     KeybMsg.LongPressIndex=0;
 
-                    TempCANTxMsg.data_TX[0] = KeybMsg.OldKeybCode;
+                    TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
                     TempCANTxMsg.dataLen= KEYB_MSG_LEN;
                     TempCANTxMsg.id = (CAN_MESSAGE_IHM_TYPE << 7 | LocalCanAdress <<4 | KEYB_MSG_TYPE );
                     TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
                     PutCANTxFifo(TempCANTxMsg);
         }
 
-        //-------- if long press delay expired and long press not detected, switch to long press mode, and sens first data frame
+        //-------- if a key released is detected, and not a long press, send can message, with the code detected after key event
+        if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode==KEYB_RELEASED_CODE && KeybMsg.KeybTimerTicked) // && KeybMsg.LongPressDetected==FALSE )
+        {
+                    KeybMsg.KeybTimerTicked=FALSE;
+                    KeybMsg.LongPressIndex=0;
+
+                    TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+                    TempCANTxMsg.dataLen= KEYB_MSG_LEN;
+                    TempCANTxMsg.id = (CAN_MESSAGE_IHM_TYPE << 7 | LocalCanAdress <<4 | KEYB_MSG_TYPE );
+                    TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+                    PutCANTxFifo(TempCANTxMsg);
+        }
+
+        //-------- if long press delay expired and long press not detected, switch to long press mode, and send first data frame
 
         if(KeybMsg.KeybCode!=KEYB_RELEASED_CODE && KeybMsg.LongPressIndex>=KeybMsg.KeybLongPressDelay && KeybMsg.LongPressDetected==FALSE)
         {
@@ -198,7 +210,7 @@ void main(void)
             KeybMsg.LongPressDetected=TRUE;
             KeybMsg.LongPressIndex=0;
 
-            TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+            TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode | LONGPRESS_OFFSET;
             TempCANTxMsg.dataLen= KEYB_MSG_LEN;
             TempCANTxMsg.id = (CAN_MESSAGE_IHM_TYPE << 7 | LocalCanAdress <<4 | KEYB_MSG_TYPE );
             TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -211,7 +223,7 @@ void main(void)
             KeybMsg.KeybTimerTicked=FALSE;
             KeybMsg.FirePressIndex=0;
 
-            TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+            TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode | LONGPRESS_OFFSET;
             TempCANTxMsg.dataLen= KEYB_MSG_LEN;
             TempCANTxMsg.id = (CAN_MESSAGE_IHM_TYPE << 7 | LocalCanAdress <<4 | KEYB_MSG_TYPE );
             TempCANTxMsg.flags = ECAN_TX_STD_FRAME;

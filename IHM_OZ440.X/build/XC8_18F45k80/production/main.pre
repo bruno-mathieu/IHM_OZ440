@@ -22591,13 +22591,25 @@ else
 KeybMsg.KeyPressedEvent=0;
 
 
-
-if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode==0x00 && KeybMsg.LongPressDetected==0 && KeybMsg.KeybTimerTicked)
+if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode!=0x00 && KeybMsg.KeybTimerTicked && KeybMsg.LongPressDetected==0)
 {
 KeybMsg.KeybTimerTicked=0;
 KeybMsg.LongPressIndex=0;
 
-TempCANTxMsg.data_TX[0] = KeybMsg.OldKeybCode;
+TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+TempCANTxMsg.dataLen= 1;
+TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
+TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+PutCANTxFifo(TempCANTxMsg);
+}
+
+
+if(KeybMsg.KeyPressedEvent && KeybMsg.KeybCode==0x00 && KeybMsg.KeybTimerTicked)
+{
+KeybMsg.KeybTimerTicked=0;
+KeybMsg.LongPressIndex=0;
+
+TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
 TempCANTxMsg.dataLen= 1;
 TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22613,7 +22625,7 @@ KeybMsg.KeybTimerTicked=0;
 KeybMsg.LongPressDetected=1;
 KeybMsg.LongPressIndex=0;
 
-TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode | 0x80;
 TempCANTxMsg.dataLen= 1;
 TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22626,7 +22638,7 @@ if(KeybMsg.KeybCode!=0x00 && KeybMsg.FirePressIndex>=KeybMsg.KeybFireDelay && Ke
 KeybMsg.KeybTimerTicked=0;
 KeybMsg.FirePressIndex=0;
 
-TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode;
+TempCANTxMsg.data_TX[0] = KeybMsg.KeybCode | 0x80;
 TempCANTxMsg.dataLen= 1;
 TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x1 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22644,7 +22656,7 @@ KeybMsg.LongPressDetected=0;
 
 }
 
-# 237
+# 249
 if(SoundMsg.SoundType == 1 && SoundMsg.OnTimeIndex>SoundMsg.OnDuration)
 SoundStop();
 
@@ -22683,7 +22695,7 @@ SoundMsg.OffTimeIndex= 0;
 SoundMsg.OnTimeIndex = 0;
 }
 
-# 281
+# 293
 if (!CANRxFifo.FifoEmpty)
 {
 
@@ -22792,7 +22804,7 @@ else if (TempCANRxMsg.id == (0x07 << 7 | LocalCanAdress << 4 | 0x6))
 if (TempCANRxMsg.flags == ECAN_RX_RTR_FRAME)
 {
 TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
+TempCANTxMsg.data_TX[1]=2;
 TempCANTxMsg.dataLen= 2;
 TempCANTxMsg.id = (0x07 << 7 | LocalCanAdress <<4 | 0x6 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22817,7 +22829,7 @@ PutCANTxFifo(TempCANTxMsg);
 }
 }
 
-# 418
+# 430
 if(!CANTxFifo.FifoEmpty && !TXB0CONbits.TXREQ)
 {
 TempCANTxMsg=GetCANTxFifo();

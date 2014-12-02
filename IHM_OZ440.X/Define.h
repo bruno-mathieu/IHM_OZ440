@@ -22,7 +22,7 @@ extern "C" {
 #endif	/* DEFINE_H */
 
 #define MAJOR_SW_VERSION 1
-#define MINOR_SW_VERSION 1
+#define MINOR_SW_VERSION 2
 
 #define BOARD_NUMBER 1
 #define BOARD_REVISION 1
@@ -116,6 +116,8 @@ extern "C" {
 // keyboard define
 
 #define KEYB_RELEASED_CODE 0x00
+
+#define LONGPRESS_OFFSET 0x80
 
 #define CANTX_FIFO_SIZE 10
 #define CANRX_FIFO_SIZE 10

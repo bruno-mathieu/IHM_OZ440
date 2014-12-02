@@ -38,7 +38,7 @@ ECAN_RX_XTD_FRAME 32
 ECAN_RX_RTR_FRAME 64
 ECAN_RX_DBL_BUFFERED 128
 ]
-"421
+"433
 [e E18559 _BOOL `uc
 FALSE 0
 TRUE 1
@@ -882,7 +882,7 @@ ECAN_RX_DBL_BUFFERED 128
 [v main@TempCANTxMsg TempCANTxMsg `S245  1 a 14 52 ]
 "63
 [v main@AutotestResult AutotestResult `uc  1 a 1 51 ]
-"427
+"439
 } 0
 "172 F:\MPLAB\IHM_OZ440\IHM_OZ440.X\system.c
 [v _SystemTest SystemTest `(uc  1 e 1 0 ]
